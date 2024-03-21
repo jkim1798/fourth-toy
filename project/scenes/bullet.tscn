@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://rs246ieqnk2k"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_omdgk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fg0pw"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_dffjh"]
+resource_name = "explode"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"multiply"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f82t6"]
+_data = {
+"explode": SubResource("Animation_dffjh")
+}
+
+[node name="bullet" type="CharacterBody2D" groups=["bullet"]]
+collision_layer = 6
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_omdgk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fg0pw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f82t6")
+}

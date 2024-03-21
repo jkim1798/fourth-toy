@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://iy0ve75u1xve"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_0xwix"]
+[ext_resource type="PackedScene" uid="uid://b0a3onww0x5ic" path="res://scenes/player.tscn" id="1_aak0t"]
+[ext_resource type="PackedScene" uid="uid://rs246ieqnk2k" path="res://scenes/bullet.tscn" id="2_sfqfi"]
+[ext_resource type="PackedScene" uid="uid://cn7lqsqrpx3ea" path="res://scenes/enemy.tscn" id="3_50pnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkovn"]
+size = Vector2(272, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a5t2"]
+size = Vector2(96, 192)
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_0xwix")
+bullet_scene = ExtResource("2_sfqfi")
+enemy_scene = ExtResource("3_50pnp")
+
+[node name="player" parent="." instance=ExtResource("1_aak0t")]
+position = Vector2(16, 80)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["wall"]]
+position = Vector2(120, 80)
+collision_layer = 3
+collision_mask = 3
+
+[node name="up" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_mkovn")
+
+[node name="down" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_mkovn")
+
+[node name="left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-168, 0)
+shape = SubResource("RectangleShape2D_6a5t2")
+
+[node name="right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(168, 0)
+shape = SubResource("RectangleShape2D_6a5t2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(120, 80)
+zoom = Vector2(0.75, 0.75)
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 4.0
+autostart = true
+
+[connection signal="shoot" from="player" to="." method="shoot"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
