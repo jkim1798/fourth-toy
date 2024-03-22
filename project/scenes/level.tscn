@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfu17bc55oq2l"]
-
-[ext_resource type="PackedScene" uid="uid://cyf2sn8vxyio4" path="res://scenes/main.tscn" id="1_54vpw"]
-[ext_resource type="PackedScene" uid="uid://cn7lqsqrpx3ea" path="res://scenes/enemy.tscn" id="2_6pok2"]
-
-[node name="Level" instance=ExtResource("1_54vpw")]
-
-[node name="enemy" parent="Enemies" index="7" instance=ExtResource("2_6pok2")]
-position = Vector2(12, 617)
