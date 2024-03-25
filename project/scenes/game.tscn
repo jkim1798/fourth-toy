@@ -42,7 +42,6 @@ shape = SubResource("RectangleShape2D_6a5t2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(120, 80)
-zoom = Vector2(0.75, 0.75)
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0

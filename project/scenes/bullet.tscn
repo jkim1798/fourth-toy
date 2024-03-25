@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://rs246ieqnk2k"]
+[gd_scene load_steps=6 format=3 uid="uid://rs246ieqnk2k"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_omdgk"]
+[ext_resource type="Texture2D" uid="uid://dy61idjxciuh0" path="res://assets/monochrome-transparent_packed.png" id="2_3l2ha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fg0pw"]
 radius = 4.0
@@ -41,3 +42,10 @@ shape = SubResource("CircleShape2D_fg0pw")
 libraries = {
 "": SubResource("AnimationLibrary_f82t6")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_3l2ha")
+region_enabled = true
+region_rect = Rect2(692, 196, 8, 8)
